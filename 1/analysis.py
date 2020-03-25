@@ -22,11 +22,20 @@ def speech():
       a = r.record(source)
    print(r.recognize_google(a))
 
+def getTitle():
+   title = ['THỜI SỰ', 'GÓC NHÌN','THẾ GIỚI', 'KINH DOANH', 'GIẢI TRÍ', 'THỂ THAO', 'PHÁP LUẬT', 'GIÁO DỤC', 'SỨC KHỎE', 'ĐỜI SỐNG', 'DU LỊCH', 'KHOA HỌC', 'SỐ HÓA', 'XE ', 'Ý KIẾN', 'TÂM SỰ']
+   return title
+
 def getText():
    f = open("Text.txt", encoding="utf8")
-   listText = f.read().split("///\n")
+   listText = f.read().split("///")
    f.close()
    return listText
+
+def getSentences(text):
+   sentences = [str(x).strip() for x in text.strip().split('.')] 
+   sentences.pop(len(sentences)-1)
+   return sentences
 
 def record(data):
     f = wave.open('./wav.wav', 'wb')
@@ -36,3 +45,9 @@ def record(data):
     f.writeframes(data)
     f.close()
     #return r.recognize_google(audio, language='vi-VN')
+
+if __name__ == "__main__":
+   text = getText()
+   
+  
+  
