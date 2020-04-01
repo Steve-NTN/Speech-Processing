@@ -15,6 +15,11 @@ import os
 listText = getText()
 indexText = 0; indexSen = 0
 
+topic =  ['thoi su', 'goc nhin','the gioi', 
+            'kinh doanh', 'giai tri', 'the thao', 
+            'phap luat', 'giao duc', 'suc khoe', 
+            'doi song', 'du lich', 'khoa hoc', 
+            'so hoa', 'xe', 'y kien', 'tam su']
 
 class Ui_MainWindow(object):
     st = 1
@@ -101,6 +106,7 @@ class Ui_MainWindow(object):
         
         for t in getTitle():
             self.comboBox.addItem(t)
+
         self.listWidget.addItem(getSentences(listText[0])[0])
         self.lineEdit_2.setText("1/{}".format(len(getSentences(listText[0]))))
         self.pushButton_3.clicked.connect(self.back)
@@ -126,6 +132,8 @@ class Ui_MainWindow(object):
                 self.listWidget.clear()
                 self.listWidget.addItem(getSentences(listText[i])[0])
                 indexText = i; indexSen = 0
+                self.lineEdit.clear()
+                self.lineEdit.setText(str(indexSen+1))
                 self.getIndex()
 
     def check(self, p):
@@ -140,6 +148,8 @@ class Ui_MainWindow(object):
             self.listWidget.clear()
             self.listWidget.addItem(getSentences(listText[indexText])[indexSen - 1])
             indexSen -= 1
+            self.lineEdit.clear()
+            self.lineEdit.setText(str(indexSen+1))
             self.getIndex()
         
 
@@ -150,6 +160,8 @@ class Ui_MainWindow(object):
             self.listWidget.clear()
             self.listWidget.addItem(getSentences(listText[indexText])[indexSen + 1])
             indexSen += 1
+            self.lineEdit.clear()
+            self.lineEdit.setText(str(indexSen+1))
             self.getIndex()
 
     def getIndex(self):
@@ -181,7 +193,7 @@ class Ui_MainWindow(object):
 
             stream.close()
 
-            wf = wave.open(fileName + '.wav', 'wb')
+            wf = wave.open('./data/{}/{}.wav'.format(topic[indexText], fileName), 'wb')
             wf.setnchannels(self.CHANNELS)
             wf.setsampwidth(self.p.get_sample_size(self.FORMAT))
             wf.setframerate(self.RATE)
@@ -189,8 +201,13 @@ class Ui_MainWindow(object):
             wf.close()
 
     def stop(self):
+        
         self.st = 0
 
+    def browse(self):    
+        path = os.path.realpath("C:/Users/Administrator/Desktop/Speech Processing/1/data")
+        os.startfile(path)
+        print(path)
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

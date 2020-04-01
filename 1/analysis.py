@@ -22,9 +22,6 @@ def speech():
       a = r.record(source)
    print(r.recognize_google(a))
 
-def getTitle():
-   title = ['THỜI SỰ', 'GÓC NHÌN','THẾ GIỚI', 'KINH DOANH', 'GIẢI TRÍ', 'THỂ THAO', 'PHÁP LUẬT', 'GIÁO DỤC', 'SỨC KHỎE', 'ĐỜI SỐNG', 'DU LỊCH', 'KHOA HỌC', 'SỐ HÓA', 'XE ', 'Ý KIẾN', 'TÂM SỰ']
-   return title
 
 def getText():
    f = open("Text.txt", encoding="utf8")
@@ -45,9 +42,23 @@ def record(data):
     f.writeframes(data)
     f.close()
     #return r.recognize_google(audio, language='vi-VN')
+def writeToFile(text):
+   f = open("t.txt", "w").close()
+   f = open("t.txt", "w", encoding="utf-8")
 
+   for i in range(len(getSentences(text))):
+      f.write("{}.wav\n".format(i+1))
+      f.write(getSentences(text)[i] + "\n")
+
+def getTitle():
+   title = ['THỜI SỰ', 'GÓC NHÌN','THẾ GIỚI', 
+            'KINH DOANH', 'GIẢI TRÍ', 'THỂ THAO', 
+            'PHÁP LUẬT', 'GIÁO DỤC', 'SỨC KHỎE', 
+            'ĐỜI SỐNG', 'DU LỊCH', 'KHOA HỌC', 
+            'SỐ HÓA', 'XE ', 'Ý KIẾN', 'TÂM SỰ']
+   return title
+
+from os import listdir
+from os.path import isfile, join
 if __name__ == "__main__":
-   text = getText()
-   
-  
-  
+   writeToFile(getText()[15])
