@@ -1,7 +1,3 @@
-import soundfile as sf
-import sounddevice as sd
-import speech_recognition as sr
-import pyaudio
 import time
 import wave
 import os
@@ -58,7 +54,6 @@ def getTitle():
             'SỐ HÓA', 'XE ', 'Ý KIẾN', 'TÂM SỰ']
    return title
 
-from os import listdir
-from os.path import isfile, join
+
 if __name__ == "__main__":
    writeToFile(getText()[15])
