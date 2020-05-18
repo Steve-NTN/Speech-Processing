@@ -193,7 +193,7 @@ class Ui_MainWindow(object):
 
             stream.close()
 
-            wf = wave.open('./data/{}/{}.wav'.format(topic[indexText], fileName), 'wb')
+            wf = wave.open('{}.wav'.format(fileName), 'wb')
             wf.setnchannels(self.CHANNELS)
             wf.setsampwidth(self.p.get_sample_size(self.FORMAT))
             wf.setframerate(self.RATE)
