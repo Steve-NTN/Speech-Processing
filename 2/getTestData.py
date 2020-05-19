@@ -105,7 +105,7 @@ try:
                     loc='lower left', ncol=len(args.channels))
         ax.axis((0, len(plotdata), -1, 1))
         ax.set_yticks([0])
-        ax.yaxis.grid(True)
+        ax.yaxis.grid(True) 
         ax.tick_params(bottom='off', top='off', labelbottom='off',
                     right='off', left='off', labelleft='off')
         fig.tight_layout(pad=0)
@@ -117,7 +117,7 @@ try:
         with stream:
             plt.show()
 
-        class_name = "test_yte"
+        class_name = "test_y tế"
         data_dir = os.path.join("data",class_name)
         os.makedirs(data_dir, exist_ok=True)
         file_path = os.path.join(data_dir, f"{class_name}_{count:03d}.wav")

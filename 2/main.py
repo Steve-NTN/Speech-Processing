@@ -44,7 +44,10 @@ def clustering(X, n_clusters=10):
 
 
 if __name__ == "__main__":
-    class_names = ["nguoi", "khong", "cua", "co", "yte", "test_nguoi", "test_khong", "test_cua", "test_co", "test_yte"]
+    
+    class_names = ["người", "không", "của", "có", "y tế", "test_người", "test_không", "test_của", "test_có", "test_y tế"]
+    #class_names = ["người", "không", "y tế", "test_người", "test_không", "test_y tế"]
+
     dataset = {}
     for cname in class_names:
         print(f"Load {cname} dataset")
@@ -76,6 +79,8 @@ if __name__ == "__main__":
 
     print("Training done")
 
+    with open("modelTrain.pkl", "wb") as file:
+        pickle.dump(models, file)
 
     print("Testing")
     for true_cname in class_names:
